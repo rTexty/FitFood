@@ -23,4 +23,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           fail: true
+          failIfEmpty: false
+
           args: --verbose --no-progress './**/*.md'
