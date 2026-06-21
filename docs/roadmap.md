@@ -1,56 +1,51 @@
 # FitFood Product Roadmap
 
-This roadmap outlines the strategic evolution of the FitFood application across key development milestones. It maps user stories and technical initiatives to specific product releases.
+## 🎯 Product Goal
+FitFood is a smart nutrition assistant designed to help users manage their fridge inventory, minimize food waste, and automatically generate personalized meal plans based on available products.
 
 ---
 
-## 🎯 Executive Summary
-FitFood is a smart nutrition and meal planning assistant designed to help users track their current fridge inventory, minimize food waste, and automatically generate personalized meal plans based on available products.
+## 📅 Sprint 1 (Current)
+*   **Dates:** June 15, 2026 – June 21, 2026
+*   **Milestone Link:** [Sprint 1 Milestone](https://github.com/rTexty/FitFood/milestone/1)
+*   **Sprint Goal:** Establish the database schema and deliver core user paths for manual inventory addition and receipt QR scanning.
+*   **Expected Outcome:** Users can view an interactive UI and successfully save products to their digital profile.
+
+### 📋 Planned Items:
+*   #17 `TECH-001: Set up product and inventory database schema`
+*   #18 `TECH-002: Set up recipe and nutrition database schema`
+*   #20 `TECH-003: Implement Product SQLAlchemy model`
+*   #21 `TECH-004: Implement product API endpoints`
+*   #4  `US-001: Add products to inventory`
+*   #5  `US-002: Scan receipt QR code`
+*   #6  `US-003: Track product expiration dates`
+*   #7  `US-004: Receive expiration notifications`
+*   #9  `US-006: Recipe database`
 
 ---
 
-## 🚀 Phase 1: MVP v1 (Sprint 1) — Core Inventory & Receipt Scanning
-**Focus:** Establishing the database architecture, core inventory tracking UI, and initial product ingestion mechanics.  
-**Target Release:** `v1.0.0`
+## 📅 Sprint 2 (Next)
+*   **Dates:** June 22, 2026 – June 28, 2026
+*   **Milestone Link:** *Milestone to be created upon Sprint 1 completion*
+*   **Sprint Goal:** Implement automated meal generation using available inventory and allow user fitness goal setting.
+*   **Expected Outcome:** Functional backend logic providing recipe suggestions based on what's in the fridge.
 
-### 💻 Epics & User Stories Included:
-*   **[Must Have]** `TECH-001` / `TECH-002` / `TECH-003`: Database schema setup (Product, Inventory, Recipes) and SQLAlchemy model implementations.
-*   **[Must Have]** `US-001`: Add products manually to the digital inventory.
-*   **[Must Have]** `US-002`: Scan receipt QR codes to auto-populate the fridge inventory.
-*   **[Must Have]** `US-003`: Track product expiration dates.
-*   **[Must Have]** `US-004`: Receive expiration notifications.
-*   **[Must Have]** `US-006`: Core Recipe database integration.
-
-### 🛡️ Status & Verification:
-*   **Database & Core API:** Implemented and undergoing review.
-*   **UI/UX Prototypes:** Completed in Lovable/Figma for inventory management and QR scanning flows.
+### 📋 Planned Items:
+*   #8  `US-005: Get recipe suggestions based on available products`
+*   #11 `US-008: Set a nutrition/fitness goal`
+*   #12 `US-009: Weekly meal plan generation`
+*   #15 `US-012: Generate meal plan from current fridge inventory`
 
 ---
 
-## 📈 Phase 2: MVP v2 (Sprint 2) — AI-Driven Meal Recommendations & Core Analytics
-**Focus:** Integrating the AI recipe generation engine based on available inventory and basic nutrition goals.  
-**Target Release:** `v2.0.0` (Proposed)
+## 📅 Sprint 3 (Future Horizon)
+*   **Dates:** June 29, 2026 – July 05, 2026
+*   **Milestone Link:** *Milestone to be created upon Sprint 2 completion*
+*   **Sprint Goal:** Advanced macro-tracking capabilities and developer integration.
+*   **Expected Outcome:** Full KBJU calculation and public API access points.
 
-### 🔮 Planned Features & User Stories:
-*   **[Must Have]** `US-005`: Get dynamic recipe suggestions purely based on currently available products in the fridge.
-*   **[Should Have]** `US-012`: Generate localized meal plans from current fridge inventory to minimize waste.
-*   **[Should Have]** `US-008`: Set a personal nutrition/fitness goal within the user profile.
-*   **[Should Have]** `US-009`: Weekly meal plan generation schedules.
-
----
-
-## 💎 Phase 3: MVP v3 (Sprint 3 & Beyond) — Advanced Nutrition & Public API
-**Focus:** Fine-grained macro/micro tracking, comprehensive historical data, and external developer ecosystem.  
-**Target Release:** `v3.0.0` (Proposed)
-
-### 🗺️ Future Horizon:
-*   **[Should Have]** `US-010`: View detailed nutritional information for suggested recipes.
-*   **[Should Have]** `US-011`: Track precise product quantity by weight or item count.
-*   **[Should Have]** `US-013`: Detailed KBJU (КБЖУ) tracking per individual product and compiled meals.
-*   **[Must Have]** `US-007`: Public API deployment for external integrations.
-
----
-
-## ⚠️ Key Risks & Assumptions
-1.  **Receipt API Dependency (`US-002`):** Assumes stable integration with external receipt/fiscal data providers. A manual fallback UI must be implemented in MVP v1.
-2.  **LLM Ingestion & Processing (`US-005`):** Recipe suggestions rely on consistent parsing of text. Prompt engineering and fallback static recipes will be required during Sprint 2.
+### 📋 Planned Items:
+*   #10 `US-007: Public API`
+*   #13 `US-010: View nutritional information for recipes`
+*   #14 `US-011: Track product quantity by weight or count`
+*   #16 `US-013: Track nutrient (KBJU) values per product and meal`
