@@ -1,0 +1,81 @@
+name: Bug Report
+description: Report a reproducible defect or regression.
+title: "[Bug]: "
+labels:
+  - bug
+  - needs-triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please include enough detail for someone else to reproduce the problem.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What went wrong?
+      placeholder: Describe the observed defect clearly and briefly.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Provide the exact steps that trigger the issue.
+      placeholder: |
+        1. Go to ...
+        2. Click ...
+        3. See ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should have happened instead?
+      placeholder: The app should ...
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What actually happened?
+      placeholder: The app currently ...
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Critical
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, device, OS, Python version, deployment, or other relevant context.
+      placeholder: macOS 15, Python 3.12, Chrome 126, local dev
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs, screenshots, or artifacts
+      description: Add relevant stack traces, screenshots, console output, or links.
+      render: shell
+    validations:
+      required: false
+  - type: textarea
+    id: regression
+    attributes:
+      label: Regression context
+      description: If known, when did this last work and what changed?
+      placeholder: Last known good version, commit, branch, or date.
+    validations:
+      required: false

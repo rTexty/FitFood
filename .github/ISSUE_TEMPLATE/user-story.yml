@@ -1,0 +1,64 @@
+name: User Story
+description: Propose a user-centered product capability.
+title: "[Story]: "
+labels:
+  - user-story
+  - needs-triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for product work that describes a user's goal and expected value.
+  - type: textarea
+    id: story
+    attributes:
+      label: User story
+      description: Describe the user, their goal, and the benefit.
+      placeholder: As a ..., I want ..., so that ...
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: What user need, workflow gap, or course requirement does this address?
+      placeholder: Explain the current limitation and why this matters.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: List measurable outcomes that must be true for this story to be done.
+      placeholder: |
+        - [ ] Given ..., when ..., then ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope notes
+      description: Include known constraints, dependencies, or non-goals.
+      placeholder: In scope, out of scope, dependencies, risks.
+    validations:
+      required: false
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - Critical
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting evidence
+      description: Add links, screenshots, references, or notes that clarify the request.
+      placeholder: Links, screenshots, sketches, research notes.
+    validations:
+      required: false

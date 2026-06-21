@@ -1,0 +1,73 @@
+name: Course Task
+description: Track an assignment, milestone, or course deliverable.
+title: "[Course Task]: "
+labels:
+  - course-task
+  - needs-triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for coursework milestones, reports, demos, and instructor-defined deliverables.
+  - type: input
+    id: course-week
+    attributes:
+      label: Course week or module
+      description: Identify the course week, module, sprint, or lesson.
+      placeholder: Week 2, Module 4, Sprint 1
+    validations:
+      required: true
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: What must be completed?
+      placeholder: Describe the required deliverable or assignment outcome.
+    validations:
+      required: true
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Requirements
+      description: List all required items from the assignment brief.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Deliverables
+      description: What files, reports, links, demos, or screenshots should be produced?
+      placeholder: README update, report, deployment link, demo recording.
+    validations:
+      required: true
+  - type: input
+    id: due-date
+    attributes:
+      label: Due date
+      description: Use an exact date when known.
+      placeholder: YYYY-MM-DD
+    validations:
+      required: false
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      options:
+        - Not started
+        - In progress
+        - Blocked
+        - Ready for review
+        - Done
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes and references
+      description: Add assignment links, rubric notes, instructor feedback, or blockers.
+      placeholder: Links, rubric excerpts, blockers, questions.
+    validations:
+      required: false
