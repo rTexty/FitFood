@@ -1,0 +1,2 @@
+"""FitFood backend application package."""
+
