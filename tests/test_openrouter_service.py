@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+
 import httpx
 import pytest
 
@@ -20,9 +22,9 @@ def test_openrouter_chat_service_posts_request_and_parses_json() -> None:
         assert request.headers["HTTP-Referer"] == "https://fitfood.test"
         assert request.headers["X-OpenRouter-Title"] == "FitFood"
 
-        payload = request.read()
-        assert b'"model":"google/gemma-4-31b-it:free"' in payload
-        assert b'"reasoning_split"' not in payload
+        payload = json.loads(request.read())
+        assert payload["model"] == "google/gemma-4-31b-it:free"
+        assert "reasoning_split" not in payload
         return httpx.Response(
             200,
             json={

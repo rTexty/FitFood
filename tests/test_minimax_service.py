@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+
 import httpx
 import pytest
 
@@ -18,9 +20,9 @@ def test_minimax_chat_service_posts_openai_compatible_request_and_parses_json() 
         assert request.url.path == "/v1/chat/completions"
         assert request.headers["Authorization"] == "Bearer test-key"
 
-        payload = request.read()
-        assert b'"model":"MiniMax-M3"' in payload
-        assert b'"max_completion_tokens":500' in payload
+        payload = json.loads(request.read())
+        assert payload["model"] == "MiniMax-M3"
+        assert payload["max_completion_tokens"] == 500
         return httpx.Response(
             200,
             json={
