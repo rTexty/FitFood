@@ -71,6 +71,15 @@ and invalid requests return a structured `error` object.
 pytest
 ```
 
+## Continuous Integration
+
+Pull requests to `main` must pass the GitHub Actions `CI` workflow:
+
+- `Backend tests` installs Python 3.12 dependencies and runs `pytest -q`.
+- `Frontend checks` installs npm dependencies, then runs lint, tests, build, and
+  production dependency audit.
+- `Docker build smoke test` builds the backend and frontend Docker images.
+
 ## Environment Variables
 
 See [`.env.example`](.env.example). Keep provider and LLM API keys backend-only;

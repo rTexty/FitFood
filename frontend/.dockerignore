@@ -22,8 +22,7 @@ dist
 .env.*
 !.env.example
 
-# Lock-файлы, которые не нужны в контейнере сборки при использовании bun
-package-lock.json
+# Lock files not used by the npm-based container build
 yarn.lock
 pnpm-lock.yaml
 

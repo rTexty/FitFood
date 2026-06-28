@@ -1,40 +1,33 @@
-# Frontend (TanStack Start + Nitro node-server) — multi-stage
-# ---------- builder ----------
-FROM oven/bun:1 AS builder
+# Frontend (TanStack Start + Nitro node-server) multi-stage image.
+
+FROM node:22-bookworm-slim AS builder
 
 WORKDIR /build
 
-# Зависимости отдельно для кеширования слоёв.
-# Без --frozen-lockfile: bun в linux-контейнере может резолвить
-# platform-зависимые optional deps иначе, чем локальный lockfile.
-COPY package.json bun.lock* ./
-RUN bun install
+COPY package.json package-lock.json ./
+RUN npm ci
 
 COPY . .
 
-ENV NODE_ENV=production
 ARG VITE_API_BASE_URL
+ENV NODE_ENV=production
 ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
-RUN bun run build
+RUN npm run build
 
 
-# ---------- runner ----------
-FROM oven/bun:1-slim AS runner
+FROM node:22-bookworm-slim AS runner
 
-# wget нужен для healthcheck
 RUN apt-get update \
  && apt-get install -y --no-install-recommends wget ca-certificates \
  && rm -rf /var/lib/apt/lists/*
 
-# Непривилегированный пользователь
 RUN groupadd --system --gid 1001 appgroup \
- && useradd  --system --uid 1001 --gid appgroup --create-home --shell /bin/bash appuser
+ && useradd --system --uid 1001 --gid appgroup --create-home --shell /bin/bash appuser
 
 WORKDIR /app
 
-# Только артефакты сборки и манифест пакета
-COPY --from=builder --chown=appuser:appgroup /build/.output        ./.output
-COPY --from=builder --chown=appuser:appgroup /build/package.json   ./
+COPY --from=builder --chown=appuser:appgroup /build/.output ./.output
+COPY --from=builder --chown=appuser:appgroup /build/package.json ./
 
 ENV NODE_ENV=production \
     PORT=3000 \
