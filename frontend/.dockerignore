@@ -1,0 +1,33 @@
+# ---------- frontend ----------
+.git
+.gitignore
+.dockerignore
+Dockerfile
+node_modules
+dist
+.output
+.vite
+.cache
+.tanstack
+.workspace
+
+# IDE
+.vscode
+.idea
+
+# Логи и OS-мусор
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# Lock-файлы, которые не нужны в контейнере сборки при использовании bun
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# CI/тесты/прочая документация
+.github
+docs
+*.md
