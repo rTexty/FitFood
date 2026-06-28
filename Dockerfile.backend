@@ -1,0 +1,63 @@
+# syntax=docker/dockerfile:1.7
+# ---------- builder ----------
+# Python 3.12 — pydantic-core 2.x через PyO3 0.21 ещё не поддерживает 3.13.
+# Как обновите pydantic до 2.10+ — можно вернуть 3.13-slim.
+FROM python:3.12-slim AS builder
+
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
+WORKDIR /build
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends build-essential \
+ && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt ./
+RUN pip install --prefix=/install -r requirements.txt
+
+
+# ---------- runner ----------
+FROM python:3.12-slim AS runner
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app \
+    FITFOOD_ENV=production
+
+# curl нужен для healthcheck
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends curl \
+ && rm -rf /var/lib/apt/lists/*
+
+# Непривилегированный пользователь
+RUN groupadd --system --gid 1001 appgroup \
+ && useradd  --system --uid 1001 --gid appgroup --create-home --shell /bin/bash appuser
+
+WORKDIR /app
+
+# Зависимости из builder
+COPY --from=builder /install /usr/local
+
+# Код приложения
+COPY --chown=appuser:appgroup main.py ./
+COPY --chown=appuser:appgroup app ./app
+
+# Директория для SQLite-БД
+RUN mkdir -p /app/data && chown -R appuser:appgroup /app/data
+VOLUME ["/app/data"]
+
+USER appuser
+
+EXPOSE 8000
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+  CMD curl -fsS http://localhost:8000/api/v1/health || exit 1
+
+CMD ["uvicorn", "main:app", \
+     "--host", "0.0.0.0", \
+     "--port", "8000", \
+     "--workers", "2", \
+     "--proxy-headers", \
+     "--forwarded-allow-ips", "*"]
