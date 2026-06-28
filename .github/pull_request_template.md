@@ -1,33 +1,17 @@
-## Summary
+## Summary of changes
 
 - 
 
-## Type of Change
-
-- [ ] Feature
-- [ ] Bug fix
-- [ ] Refactor
-- [ ] Documentation
-- [ ] Test-only change
-- [ ] Build, CI, or tooling
-
-## Related Work
+## Related issue
 
 Closes #
 
-## User Impact
+## Testing performed
 
-- 
-
-## Implementation Notes
-
-- 
-
-## Testing
-
-- [ ] Unit tests added or updated
-- [ ] Integration tests added or updated
-- [ ] E2E or manual flow verified
+- [ ] Unit tests
+- [ ] Integration tests
+- [ ] E2E tests
+- [ ] Manual smoke test
 - [ ] Not applicable, because:
 
 Commands run:
@@ -36,24 +20,15 @@ Commands run:
 
 ```
 
-## Screenshots or Recordings
+## Reviewer checklist
 
-Add before/after screenshots, recordings, or terminal output when the change affects UI or observable behavior.
-
-## Security and Data Checklist
-
+- [ ] Scope matches the linked issue
+- [ ] Code follows project conventions and conventional commits
+- [ ] User inputs are validated at system boundaries
 - [ ] No secrets, credentials, or private data are committed
-- [ ] User input is validated at system boundaries
-- [ ] Error messages avoid leaking sensitive details
-- [ ] Authorization or access-control impact has been considered
-- [ ] Not applicable, because:
+- [ ] Errors are handled with user-safe messages
+- [ ] Documentation is updated when behavior changes
 
-## Documentation Checklist
-
-- [ ] README, reports, or project docs updated
-- [ ] Comments added only where they clarify non-obvious behavior
-- [ ] Not applicable, because:
-
-## Reviewer Notes
+## Notes for reviewer
 
 - 
