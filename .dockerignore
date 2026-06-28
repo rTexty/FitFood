@@ -1,0 +1,44 @@
+# ---------- backend ----------
+.git
+.github
+.gitignore
+.claude
+.venv
+.venv/**
+.pytest_cache
+.vscode
+.idea
+__pycache__
+**/__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# docs/reports/plans
+docs
+reports
+plans
+customer-review-summary.md
+
+# frontend
+frontend
+
+# tests (для прода-образа не нужны)
+tests
+
+# сама SQLite-БД и артефакты сборки
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+dist
+build
+
+# Docker-метафайлы
+Dockerfile.backend
+Dockerfile.frontend
+docker-compose.yml
+.dockerignore
+.env
+.env.*
+!.env.example
